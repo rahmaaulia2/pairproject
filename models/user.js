@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.UserDetail)
       User.hasMany(models.UserCourse)
     }
+    
   }
   User.init({
     email: DataTypes.STRING,

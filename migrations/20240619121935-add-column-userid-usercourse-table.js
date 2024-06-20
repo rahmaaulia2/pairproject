@@ -1,6 +1,6 @@
 'use strict';
 
-const { sequelize } = require('../../Day 16 Week 4/fsjs-p1-v3-slc3-rahmaaulia2/models');
+const { sequelize } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
