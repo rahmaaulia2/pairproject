@@ -88,14 +88,14 @@ class Controller {
                 include : Course,
                 order : [["id", "ASC"]]
             })
+            let dataUser =  await UserDetail.findAll()
             // res.send(data)
-            res.render('studentPage', {data})
+            res.render('studentPage', {data,dataUser})
         } catch (error) {
             res.send(error)
             console.log(error);
         }
     }
-
     static async pageTeacher(req,res){
         try {
             const {id} = req.params
@@ -119,15 +119,13 @@ class Controller {
             }
             let dataUser = await UserDetail.findAll({include : User, order : [["UserId", "ASC"]]})
             // let dataTeacher = await UserDetail.findByPk(+id)
-            // res.send(data)
+            // res.send(dataUser)
             res.render('teacher', {data, dataUser, toHoursAndMinutes})
         } catch (error) {
             res.send(error)
             console.log(error);
         }
     }
-
-    
     static async showFormUp (req, res){
         try {
             const {id} =req.params
@@ -162,16 +160,13 @@ class Controller {
         try {
             // console.log(req.params);
             const {UserId, id} = req.params //id userdetail
-            await UserDetail.destroy({where : {
-                id : id}})
+            await UserDetail.destroy({where : {id : id}})
             await User.destroy({where : {id : UserId}})
             res.redirect('/teacher')
         } catch (error) {
             console.log(error);
         }
     }
-            
-
     static async logOut(req, res){
         try {
             req.session.destroy((err) =>{

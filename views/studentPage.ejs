@@ -17,7 +17,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">Home<br></a></li>
+          <li><a href="/">Home<br></a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -54,24 +54,16 @@
         <div class="container">
           <div class="box"></div>
           <div class="row d-flex justify-content-center text-center">
-            <% data.forEach(el => { %>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%= el.name %></h5>
-                  <% el.Courses.forEach(ely => { %>
-                   <p><%= ely.name %> - <%= ely.duration %></p>
-                  <% }) %>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            <% }) %>
+
+              <h3>Hallo <%= dataUser[0].fullName %>!</h3>
+
           </div>
         </div>
       </div>
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li class="current">Starter Page</li>
           </ol>
         </div>

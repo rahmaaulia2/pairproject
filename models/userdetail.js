@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull : false,
       validate : {
         len : {
-          args : [5, 10],
+          args : [5, 20],
           msg : 'Input name must be fullName'
         }
       }}

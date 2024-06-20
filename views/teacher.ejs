@@ -17,7 +17,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">Home<br></a></li>
+          <li><a href="/">Home<br></a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -45,19 +45,20 @@
 
     </div>
   </header>
-
+<div class="container">
   <main class="main">
     <form class="d-flex" role="search" method="get" action="/teacher">
       <input class="form-control me-2" type="text"  aria-label="Search"
           name="search">
       <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
+</div>
 
 
     <section id="courses" class="courses section">
 
       <div class="container">
-
+        <h2>List Course</h2>
         <div class="row">
           <% data.forEach(el => { %>
             <% el.Courses.forEach(ellagi => { %>
@@ -80,14 +81,14 @@
         </div>
         <div class="container-xl" style="margin-top: 100px; background-color: lightgray; border-radius: 5px;" >
           <h1 style="margin-top: 20px;">List Student</h1>
-          <a href="/teacher/update" type="button" class="btn btn-outline-secondary" style="margin-top: 10px; margin-bottom: 10px;">Update Student</a>
-          <table class="table">
+          <table class="table" style="text-align: center;">
             <thead>
               <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Student - Education Level</th>
                 <th scope="col">Age</th>
                 <th scope="col">Email</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -97,6 +98,8 @@
                   <td><%= el.greet %></td>
                   <td><%= el.age %></td>
                   <td><%= el.email %></td>
+                  <td><a href="/teacher/update/<%= el.id %>" type="button" class="btn btn-outline-secondary">Update</a> 
+                    <a href="/teacher/delete/<%= el.User.id %>/<%= el.id %>" type="button" class="btn btn-outline-secondary">Delete</a></td>
                 </tr>
               <% }) %>
             </tbody>
