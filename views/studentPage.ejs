@@ -18,11 +18,6 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Home<br></a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -58,14 +53,15 @@
         <div class="container">
           <div class="box"></div>
           <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Welcome to Happy Learn</h1>
-              <p class="mb-0">Already have account?</p>
-              <div style="margin-top: 20px;">
-                <a href="/login" type="button" class="btn btn-outline-secondary">Login</a>
-                <a href="/register" type="button" class="btn btn-outline-secondary">Buat Akun</a>
+            <% data.forEach(el => { %>
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><%= el.name %></h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
               </div>
-            </div>
+            <% }) %>
           </div>
         </div>
       </div>
