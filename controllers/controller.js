@@ -168,7 +168,8 @@ class Controller {
             res.redirect('/teacher')
         } catch (error) {
             console.log(error);
-
+        }
+    }
             
 
     static async logOut(req, res){
