@@ -1,10 +1,15 @@
-const { where } = require('sequelize');
+
 const {UserDetail, User, Category, Course} = require('../models')
+const { toHoursAndMinutes } = require("../helper/index")
+const bcrypt = require('bcryptjs')
+const {Op} = require('sequelize')
+
 
 class Controller {
     static async showLandpage(req, res){
         try {
-            res.render('landpage')
+            const {err} = req.query
+            res.render('landpage', {err})
         } catch (error) {
             res.send(error)
             console.log(error);
@@ -44,7 +49,8 @@ class Controller {
     }
     static async showLogin(req,res){
         try {
-            res.render('login')
+            const {err} = req.query
+            res.render('login', {err})
         } catch (error) {
             res.send(error)
             console.log(error);
@@ -53,8 +59,24 @@ class Controller {
     static async postLogin(req,res){
         try {
             const {email, password} = req.body
-            
-            res.render('student')
+            let err = 'email or password is wrong!'
+            // console.log(req.body);
+
+            let data = await User.findOne({where : {email}})
+            if(!data) {
+                res.redirect(`/login?err=${err}`)
+            }else{
+
+                let checkValid = bcrypt.compareSync(password, data.password);
+
+                    if(checkValid === true){
+                        req.session.userId = data.id
+                        req.session.role = data.role
+                        res.redirect('/student')
+                    }else{
+                        res.redirect(`/?err=${err}`)
+                    }
+            }
         } catch (error) {
             res.send(error)
             console.log(error);
@@ -73,22 +95,39 @@ class Controller {
             console.log(error);
         }
     }
-    static async pageTeacher(req, res){
+
+    static async pageTeacher(req,res){
         try {
-            // const {id} = req.params
+            const {id} = req.params
+            const {search} = req.query
+
             let data = await Category.findAll({
                 include : Course,
                 order : [["id", "ASC"]]
             })
+            if(search){
+                data = await Category.findAll({
+                    where : {
+                        name : {
+                            [Op.iLike] : `%${search}%`
+                        }
+                    },
+                    include : {
+                        model : Course,
+                    } 
+                })
+            }
             let dataUser = await UserDetail.findAll({include : User, order : [["UserId", "ASC"]]})
             // let dataTeacher = await UserDetail.findByPk(+id)
-            // res.send(dataUser)
-            res.render('teacher', {data, dataUser})
+            // res.send(data)
+            res.render('teacher', {data, dataUser, toHoursAndMinutes})
         } catch (error) {
-            console.log(error);
             res.send(error)
+            console.log(error);
         }
     }
+
+    
     static async showFormUp (req, res){
         try {
             const {id} =req.params
@@ -129,6 +168,20 @@ class Controller {
             res.redirect('/teacher')
         } catch (error) {
             console.log(error);
+
+            
+
+    static async logOut(req, res){
+        try {
+            req.session.destroy((err) =>{
+                if (err) {
+                    res.send(err)
+                }else{
+                    res.redirect('/login')
+                }
+            })
+        } catch (error) {
+
             res.send(error)
         }
     }

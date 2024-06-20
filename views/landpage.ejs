@@ -59,6 +59,11 @@
           <div class="box"></div>
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
+              <% if (err) {%>
+              <div class="alert alert-danger" role="alert">
+                <h6 style="color: rgb(0, 0, 0)"> <%= err %> </h6>
+              </div>
+              <%}%>
               <h1>Welcome to Happy Learn</h1>
               <p class="mb-0">Already have account?</p>
               <div style="margin-top: 20px;">

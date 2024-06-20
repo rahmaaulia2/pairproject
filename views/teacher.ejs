@@ -40,12 +40,19 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="courses.html">Get Started</a>
+      <a class="btn-getstarted" href="/logout">Logout</a>
+      <!-- <a class="btn-logut" href="/logOut">Logout</a> -->
 
     </div>
   </header>
 
   <main class="main">
+    <form class="d-flex" role="search" method="get" action="/teacher">
+      <input class="form-control me-2" type="text"  aria-label="Search"
+          name="search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+
 
     <section id="courses" class="courses section">
 
@@ -60,7 +67,7 @@
                   <div class="course-content">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <p class="category"><%= el.name %></p>
-                      <p class="price"><%= ellagi.duration %></p>
+                      <p class="duration"><%= toHoursAndMinutes(ellagi.duration) %></p>
                     </div>
     
                     <h3><a href="course-details.html"><%= ellagi.name %></a></h3>
@@ -73,29 +80,23 @@
         </div>
         <div class="container-xl" style="margin-top: 100px; background-color: lightgray; border-radius: 5px;" >
           <h1 style="margin-top: 20px;">List Student</h1>
-          <table class="table" style="text-align: center;">
+          <a href="/teacher/update" type="button" class="btn btn-outline-secondary" style="margin-top: 10px; margin-bottom: 10px;">Update Student</a>
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">No.</th>
-                <th scope="col">Student</th>
+                <th scope="col">Student - Education Level</th>
                 <th scope="col">Age</th>
-                <th scope="col">Education Level</th>
                 <th scope="col">Email</th>
-                <th scope="col">Education Level</th>
-                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               <% dataUser.forEach((el,idx) => { %>
                 <tr>
                   <td><%=idx+1%></td>
-                  <td><%= el.fullName %></td>
+                  <td><%= el.greet %></td>
                   <td><%= el.age %></td>
-                  <td><%= el.educationLevel %></td>
                   <td><%= el.email %></td>
-                  <td><%= el.educationLevel %></td>
-                  <td><a href="/teacher/update/<%= el.id %>" type="button" class="btn btn-outline-secondary" style="margin-top: 10px; margin-bottom: 10px;">Update</a>
-                    <a href="/teacher/delete/<%= el.User.id %>/<%= el.id %>" type="button" class="btn btn-outline-secondary" style="margin-top: 10px; margin-bottom: 10px;">Delete</a></td>
                 </tr>
               <% }) %>
             </tbody>
@@ -181,7 +182,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Mentor</strong> <span>All Rights Reserved</span></p>
+      <p>Â© <span>Copyright</span> <strong class="px-1 sitename">Mentor</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->

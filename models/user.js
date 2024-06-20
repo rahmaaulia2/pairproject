@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.UserDetail)
       User.hasMany(models.UserCourse)
     }
+
     static async sendEmail(newUser){
       let data = await sequelize.models.UserDetail.findAll({where : {
         UserId : newUser.id
@@ -40,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         });
         console.log(mailOptions);
     }
+
   }
   User.init({
     email: DataTypes.STRING,
