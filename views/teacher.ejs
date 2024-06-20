@@ -3,14 +3,15 @@
 
 <%- include('_link') %>
 
-<body class="pricing-page">
+<body class="starter-page-page">
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="assets/img/1.png" alt="image">
+        
         <h1 class="sitename">Happy Learn</h1>
       </a>
 
@@ -19,12 +20,14 @@
           <li><a href="index.html">Home<br></a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Beginner</a></li>
+              <li><a href="#">Dropdown 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
-                  <li><a href="#">Beginner</a></li>
+                  <li><a href="#">Deep Dropdown 1</a></li>
                   <li><a href="#">Deep Dropdown 2</a></li>
                   <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
                 </ul>
               </li>
               <li><a href="#">Dropdown 2</a></li>
@@ -44,47 +47,78 @@
 
   <main class="main">
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
+    <section id="courses" class="courses section">
+
       <div class="container">
-        <h2>Create New Account</h2>
-        <% if (errors) { %>
-          <% errors.split(',').forEach(el =>{ %>
-           <p style="color: red;"><%= el%></p>
-         <% }) %>
-         <% } %>
-            <form style="margin-top: 30px;" method="post" action="/register">
-                <div class="form-group">
-                  <label for="exampleInputEmail1" style="margin-bottom: 5px;">Full Name</label>
-                  <input type="name" class="form-control"  placeholder="Enter Full Name" name="fullName">
+
+        <div class="row">
+          <% data.forEach(el => { %>
+            <% el.Courses.forEach(ellagi => { %>
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" style="margin-top: 20px;">
+                <div class="course-item">
+                  <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+                  <div class="course-content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <p class="category"><%= el.name %></p>
+                      <p class="price"><%= ellagi.duration %></p>
+                    </div>
+    
+                    <h3><a href="course-details.html"><%= ellagi.name %></a></h3>
+                    <p class="description"><%= ellagi.description %></p>
+                  </div>
                 </div>
-                <div class="form-group" style="margin-top: 5px;">
-                  <label for="Age" style="margin-bottom: 5px;">Age</label>
-                  <input type="number" class="form-control"  placeholder="Age" name="age">
-                </div>
-                <div class="form-group" style="margin-top: 5px;">
-                  <label for="Education" style="margin-bottom: 5px;">Education Level</label>
-                  <input type="text" class="form-control"  placeholder="Education Level" name="educationLevel">
-                </div>
-                <div class="form-group" style="margin-top: 5px;">
-                  <label for="role" style="margin-bottom: 5px;">Role</label>
-                  <input type="text" class="form-control"  placeholder="Role" name="role">
-                </div>
-                <div class="form-group" style="margin-top: 5px;">
-                  <label for="email" style="margin-bottom: 5px;">Email</label>
-                  <input type="email" class="form-control"  placeholder="Email" name="email">
-                </div>
-                <div class="form-group" style="margin-top: 5px;">
-                  <label for="Phone Number" style="margin-bottom: 5px;">Phone Number</label>
-                  <input type="text" class="form-control"  placeholder="Phone Number" name="phoneNumber">
-                </div>
-                <div class="form-group" style="margin-top: 5px;">
-                  <label for="password" style="margin-bottom: 5px;">Password</label>
-                  <input type="password" class="form-control"  placeholder="password" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Register</button>
-            </form>
+              </div> <!-- End Course Item-->
+            <% }) %>
+          <% }) %>
+        </div>
+        <div class="container-xl" style="margin-top: 100px; background-color: lightgray; border-radius: 5px;" >
+          <h1 style="margin-top: 20px;">List Student</h1>
+          <table class="table" style="text-align: center;">
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Student</th>
+                <th scope="col">Age</th>
+                <th scope="col">Education Level</th>
+                <th scope="col">Email</th>
+                <th scope="col">Education Level</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% dataUser.forEach((el,idx) => { %>
+                <tr>
+                  <td><%=idx+1%></td>
+                  <td><%= el.fullName %></td>
+                  <td><%= el.age %></td>
+                  <td><%= el.educationLevel %></td>
+                  <td><%= el.email %></td>
+                  <td><%= el.educationLevel %></td>
+                  <td><a href="/teacher/update/<%= el.id %>" type="button" class="btn btn-outline-secondary" style="margin-top: 10px; margin-bottom: 10px;">Update</a>
+                    <a href="/teacher/delete/<%= el.User.id %>/<%= el.id %>" type="button" class="btn btn-outline-secondary" style="margin-top: 10px; margin-bottom: 10px;">Delete</a></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
       </div>
+
+    </section>
+
+    <!-- Starter Section Section -->
+    <section id="starter-section" class="starter-section section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Starter Section</h2>
+        <p>Your Description Here<br></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up">
+        <p>Use this page as a starter for your own custom pages.</p>
+      </div>
+
+    </section><!-- /Starter Section Section -->
 
   </main>
 
@@ -94,7 +128,7 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Happy Learn</span>
+            <span class="sitename">Mentor</span>
           </a>
           <div class="footer-contact pt-3">
             <p>A108 Adam Street</p>
@@ -159,7 +193,7 @@
 
   </footer>
 
-<%- include('_linkfooter') %>
+ <%- include('_linkfooter') %>
 
 </body>
 

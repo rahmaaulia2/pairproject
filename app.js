@@ -13,7 +13,10 @@ const port = 3000
 const router = require('./routes')
 
 app.set('view engine', 'ejs')
-app.use(express.static('public'))
+app.use('/', express.static('public'))
+app.use('/teacher', express.static('public'))
+app.use('/teacher/update', express.static('public'))
+app.use('/teacher/delete', express.static('public'))
 app.use(express.urlencoded({extended:false}))
 app.use('/', router)
 

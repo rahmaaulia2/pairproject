@@ -57,7 +57,9 @@
               <div class="card" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title"><%= el.name %></h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <% el.Courses.forEach(ely => { %>
+                   <p><%= ely.name %> - <%= ely.duration %></p>
+                  <% }) %>
                   <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
@@ -74,6 +76,35 @@
         </div>
       </nav>
     </div><!-- End Page Title -->
+
+    <section id="courses" class="courses section">
+
+      <div class="container">
+
+        <div class="row">
+          <% data.forEach(el => { %>
+            <% el.Courses.forEach(ellagi => { %>
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" style="margin-top: 20px;">
+                <div class="course-item">
+                  <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+                  <div class="course-content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <p class="category"><%= el.name %></p>
+                      <p class="price"><%= ellagi.duration %></p>
+                    </div>
+    
+                    <h3><a href="course-details.html"><%= ellagi.name %></a></h3>
+                    <p class="description"><%= ellagi.description %></p>
+                  </div>
+                </div>
+              </div> <!-- End Course Item-->
+            <% }) %>
+          <% }) %>
+        </div>
+
+      </div>
+
+    </section>
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section">
