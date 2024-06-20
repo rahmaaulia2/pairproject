@@ -48,6 +48,11 @@
     <section id="pricing" class="pricing section">
       <div class="container">
         <h2>Create New Account</h2>
+        <% if (errors) { %>
+          <% errors.split(',').forEach(el =>{ %>
+           <p style="color: red;"><%= el%></p>
+         <% }) %>
+         <% } %>
             <form style="margin-top: 30px;" method="post" action="/register">
                 <div class="form-group">
                   <label for="exampleInputEmail1" style="margin-bottom: 5px;">Full Name</label>

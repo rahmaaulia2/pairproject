@@ -40,69 +40,36 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="/logout">Logout</a>
-      <!-- <a class="btn-logut" href="/logOut">Logout</a> -->
+      <a class="btn-getstarted" href="courses.html">Get Started</a>
 
     </div>
   </header>
 
   <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="box"></div>
-          <div class="row d-flex justify-content-center text-center">
-            <% data.forEach(el => { %>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%= el.name %></h5>
-                  <% el.Courses.forEach(ely => { %>
-                   <p><%= ely.name %> - <%= ely.duration %></p>
-                  <% }) %>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            <% }) %>
-          </div>
-        </div>
-      </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Page Title -->
-
     <section id="courses" class="courses section">
 
       <div class="container">
-
-        <div class="row">
-          <% data.forEach(el => { %>
-            <% el.Courses.forEach(ellagi => { %>
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" style="margin-top: 20px;">
-                <div class="course-item">
-                  <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-                  <div class="course-content">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                      <p class="category"><%= el.name %></p>
-                      <p class="price"><%= ellagi.duration %></p>
-                    </div>
-    
-                    <h3><a href="course-details.html"><%= ellagi.name %></a></h3>
-                    <p class="description"><%= ellagi.description %></p>
-                  </div>
-                </div>
-              </div> <!-- End Course Item-->
-            <% }) %>
-          <% }) %>
-        </div>
-
+        <h2>Update Student</h2>
+        <form style="margin-top: 30px;" method="post" action="/teacher/update/<%= data.id %>">
+            <div class="form-group">
+              <label for="exampleInputEmail1" style="margin-bottom: 5px;">Full Name</label>
+              <input type="name" class="form-control" name="fullName" value="<%= data.fullName %>">
+            </div>
+            <div class="form-group" style="margin-top: 5px;">
+              <label for="Age" style="margin-bottom: 5px;">Age</label>
+              <input type="number" class="form-control"  placeholder="Age" name="age" value="<%= data.age %>">
+            </div>
+            <div class="form-group" style="margin-top: 5px;">
+              <label for="Education" style="margin-bottom: 5px;">Education Level</label>
+              <input type="text" class="form-control"  placeholder="Education Level" name="educationLevel" value="<%= data.educationLevel %>">
+            </div>
+            <div class="form-group" style="margin-top: 5px;">
+              <label for="Phone Number" style="margin-bottom: 5px;">Phone Number</label>
+              <input type="text" class="form-control"  placeholder="Phone Number" name="phoneNumber" value="<%= data.phoneNumber %>">
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Update</button>
+        </form>
       </div>
 
     </section>

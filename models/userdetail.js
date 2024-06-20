@@ -24,10 +24,33 @@ module.exports = (sequelize, DataTypes) => {
   }
   }
   UserDetail.init({
-    fullName: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    educationLevel: DataTypes.STRING,
-    email: DataTypes.STRING,
+    fullName: {
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate : {
+        len : {
+          args : [5, 10],
+          msg : 'Input name must be fullName'
+        }
+      }}
+    ,
+      age: {
+        type : DataTypes.INTEGER,
+        allowNull :false,
+        validate : {
+          min : {args : 12, msg:'Minimum age 12 years old'}
+        }
+      },
+      educationLevel: DataTypes.STRING,
+      email: {
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate : {
+        isEmail :{
+          msg : ('Invalid input email')
+        }
+      }
+    },
     phoneNumber: DataTypes.STRING,
     UserId: DataTypes.INTEGER
   }, {

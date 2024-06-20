@@ -14,7 +14,10 @@ const router = require('./routes')
 const session = require('express-session')
 
 app.set('view engine', 'ejs')
-app.use(express.static('public'))
+app.use('/', express.static('public'))
+app.use('/teacher', express.static('public'))
+app.use('/teacher/update', express.static('public'))
+app.use('/teacher/delete', express.static('public'))
 app.use(express.urlencoded({extended:false}))
 
 app.use(session({
