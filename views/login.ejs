@@ -18,11 +18,6 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Home<br></a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -58,14 +53,17 @@
         <div class="container">
           <div class="box"></div>
           <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Welcome to Happy Learn</h1>
-              <p class="mb-0">Already have account?</p>
-              <div style="margin-top: 20px;">
-                <a href="/login" type="button" class="btn btn-outline-secondary">Login</a>
-                <a href="/register" type="button" class="btn btn-outline-secondary">Buat Akun</a>
+            <form method="post" action="/login" style="margin-top: 5px;">
+              <div class="form-group">
+                <label for="exampleInputEmail1" style="margin-bottom: 5px;">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
               </div>
-            </div>
+              <div class="form-group" style="margin-top: 5px;">
+                <label for="exampleInputPassword1" style="margin-bottom: 5px;">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-outline-secondary" style="margin-top: 10px;">Submit</button>
+            </form>
           </div>
         </div>
       </div>
@@ -167,7 +165,7 @@
 
   </footer>
 
- <%- include('_linkfooter') %>
+<%- include('_linkfooter') %>
 
 </body>
 
