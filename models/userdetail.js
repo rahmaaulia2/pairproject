@@ -13,6 +13,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UserDetail.belongsTo(models.User)
     }
+    get greet(){
+      if(this.educationLevel === "Beginner"){
+          return this.fullName = `${this.fullName} - Beginner`
+      }else if(this.educationLevel === "Intermediate"){
+           return this.fullName = `${this.fullName} - Intermediate`
+      }else{
+          return this.fullName = `${this.fullName} - Advanced`
+      }
+  }
   }
   UserDetail.init({
     fullName: DataTypes.STRING,

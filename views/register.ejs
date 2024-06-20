@@ -56,15 +56,32 @@
                 <div class="form-group" style="margin-top: 5px;">
                   <label for="Age" style="margin-bottom: 5px;">Age</label>
                   <input type="number" class="form-control"  placeholder="Age" name="age">
-                </div>
+                </div><br>
+      
+                <div class="mb-3">
+                  <label>Education Level</label><br>
+                <select name="educationLevel" id="educationLevel">
+                  <option selected disabled>Choose...</option>
+                  <% ["Beginner", "Intermediate", "Advanced"].forEach(el=> { %>
+                      <option value="<%= el %>"><%= el %></option><br>
+                      <% }) %>
+              </select><br>
+
                 <div class="form-group" style="margin-top: 5px;">
                   <label for="Education" style="margin-bottom: 5px;">Education Level</label>
                   <input type="text" class="form-control"  placeholder="Education Level" name="educationLevel">
+                </div><br>
+
+                <div class="mb-3">
+                  <label>Role</label><br>
+                  <select name="role" id="role">
+                      <option selected disabled>Choose...</option>
+                      <% ["Student", "Teacher"].forEach(el=> { %>
+                          <option value="<%= el %>"><%= el %></option><br>
+                          <% }) %>
+                  </select><br>
                 </div>
-                <div class="form-group" style="margin-top: 5px;">
-                  <label for="role" style="margin-bottom: 5px;">Role</label>
-                  <input type="text" class="form-control"  placeholder="Role" name="role">
-                </div>
+
                 <div class="form-group" style="margin-top: 5px;">
                   <label for="email" style="margin-bottom: 5px;">Email</label>
                   <input type="email" class="form-control"  placeholder="Email" name="email">

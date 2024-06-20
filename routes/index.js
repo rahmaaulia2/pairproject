@@ -1,13 +1,40 @@
 const express = require('express')
 const Controller = require('../controllers/controller')
 const router = express.Router()
-const student = require('./student')
+const middleware = function(req, res, next){
+    // console.log(req.session);
+    if(!req.session.userId){
+        let err = 'Please login first!'
+        res.redirect(`/login?err=${err}`)
+    }else{
+        next()
+    }
+  }
+const teacher = function(req, res, next){
+    console.log(req.session);
+    if(req.session.role !== "Teacher"){
+        let err = 'You have no access to Teachers page!'
+        res.redirect(`/?err=${err}`)
+    }else{
+        next()
+    }
+  }
 
-router.get('/', Controller.showLandpage)
+// const student = require('./student')
+
+router.get('/', middleware, Controller.showLandpage)
+
 router.get('/register', Controller.showPageRegister)
 router.post('/register', Controller.postRegister)
+
 router.get('/login', Controller.showLogin)
 router.post('/login', Controller.postLogin)
-router.use('/student', student)
+
+router.get('/logout', Controller.logOut)
+
+
+router.get('/student', middleware, Controller.pageLevelStudent)
+
+router.get('/teacher', teacher, Controller.pageTeacher)
 
 module.exports = router
