@@ -34,6 +34,9 @@ module.exports = (sequelize, DataTypes) => {
         len : {
           args : [5, 20],
           msg : 'Input name must be fullName'
+        },
+        notEmpty : {
+          msg : 'Name must be not empty'
         }
       }}
     ,
@@ -42,6 +45,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull :false,
         validate : {
           min : {args : 12, msg:'Minimum age 12 years old'}
+        }, 
+        notEmpty : {
+          msg :'Age must not be empty'
         }
       },
       educationLevel: DataTypes.STRING,
@@ -51,6 +57,9 @@ module.exports = (sequelize, DataTypes) => {
       validate : {
         isEmail :{
           msg : ('Invalid input email')
+        },
+        notEmpty : {
+          msg : 'Email must not be empty'
         }
       }
     },
