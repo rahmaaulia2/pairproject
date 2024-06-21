@@ -33,6 +33,7 @@ router.post('/register', Controller.postRegister)
 router.get('/login', Controller.showLogin)
 router.post('/login', Controller.postLogin)
 
+router.get('/student/:CourseId', Controller.showLandpage)
 router.get('/student', middleware, Controller.pageLevelStudent)
 router.get('/teacher/update/:id', Controller.showFormUp)
 router.post('/teacher/update/:id', Controller.postUpStudent)

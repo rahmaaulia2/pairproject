@@ -5,46 +5,7 @@
 
 <body class="starter-page-page">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/1.png" alt="image">
-        
-        <h1 class="sitename">Happy Learn</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="/">Home<br></a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="/logout">Logout</a>
-      <!-- <a class="btn-logut" href="/logOut">Logout</a> -->
-
-    </div>
-  </header>
+  <%- include('_header') %>
 
   <main class="main">
 
@@ -83,11 +44,12 @@
                   <div class="course-content">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <p class="category"><%= el.name %></p>
-                      <p class="price"><%= ellagi.duration %></p>
+                      <p class="price"><%= toHoursAndMinutes(ellagi.duration) %></p>
                     </div>
     
                     <h3><a href="course-details.html"><%= ellagi.name %></a></h3>
                     <p class="description"><%= ellagi.description %></p>
+                    <a href="/student/<%= el.Courses.id %>" type="button" class="btn btn-outline-success d-flex " style="-ms-flex-align: center;">Start Study</a>
                   </div>
                 </div>
               </div> <!-- End Course Item-->

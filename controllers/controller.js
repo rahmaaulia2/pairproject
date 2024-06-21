@@ -90,7 +90,7 @@ class Controller {
             })
             let dataUser =  await UserDetail.findAll()
             // res.send(data)
-            res.render('studentPage', {data,dataUser})
+            res.render('studentPage', {data,dataUser,toHoursAndMinutes})
         } catch (error) {
             res.send(error)
             console.log(error);
@@ -179,6 +179,13 @@ class Controller {
         } catch (error) {
 
             res.send(error)
+        }
+    }
+    static async showCourse(req, res){
+        try {
+            // const { User.iId =  reu}
+        } catch (error) {
+            
         }
     }
 }

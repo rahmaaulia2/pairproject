@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UserDetail.belongsTo(models.User)
     }
+    // years(){
+    //   this.age = `${this.age} years old`
+    // }
     get greet(){
       if(this.educationLevel === "Beginner"){
           return this.fullName = `${this.fullName} - Beginner`
