@@ -14,7 +14,7 @@ var transporter = nodemailer.createTransport({
 
 var mailOptions = {
   from: 'registration@happylearn.ac.id',
-  to: "daffazuhdii132@gmail.com",
+  to: "kosonginaja@gmail",
   subject: 'Register Success',
   text: `'Welcome (nama) as (role)'`
 };
